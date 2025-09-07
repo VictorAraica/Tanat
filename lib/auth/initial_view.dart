@@ -1,11 +1,14 @@
-// import 'package:tanat/auth/login/login_view.dart';
+import 'package:tanat/auth/login/login_view.dart';
 // import 'package:tanat/auth/register/check_email_view.dart';
 // import 'package:tanat/utils/navigations.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:tanat/utils/navigations.dart';
 import 'package:tanat/utils/styles_values.dart';
 
 class InitialView extends StatefulWidget {
+  const InitialView({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _CarouselWithIndicatorState();
@@ -20,7 +23,7 @@ class _CarouselWithIndicatorState extends State<InitialView> {
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     final backgroundColor = _current == 0 ? primaryColor : darkColor;
-    final textColor = _current == 0 ? darkColor : Colors.white;
+    final textColor = _current == 0 ? darkColor : whiteColor;
     return Stack(
       children: [
         Positioned.fill(
@@ -53,7 +56,9 @@ class _CarouselWithIndicatorState extends State<InitialView> {
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 28),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: horizontalPadding,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -77,7 +82,7 @@ class _CarouselWithIndicatorState extends State<InitialView> {
                           backgroundColor: Colors.black.withOpacity(0.05),
                         ),
                         onPressed: () {
-                          // navigationPush(context, const CheckEmailView());
+                          navigationPush(context, LoginView());
                         },
                         child: Text(
                           'iniciar sesión',
@@ -102,7 +107,7 @@ class _CarouselWithIndicatorState extends State<InitialView> {
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: (_current == 1
-                                            ? Colors.white
+                                            ? whiteColor
                                             : Colors.black)
                                         .withOpacity(
                                           _current == entry.key ? 0.9 : 0.4,
@@ -135,7 +140,7 @@ class InitialViewBackground1 extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(color: primaryColor),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: horizontalPadding),
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -232,7 +237,7 @@ class InitialViewBackground2 extends StatelessWidget {
                 child: RichText(
                   textAlign: TextAlign.left,
                   text: TextSpan(
-                    style: TextStyle(color: Colors.white, fontSize: 28),
+                    style: TextStyle(color: whiteColor, fontSize: 28),
                     children: const <TextSpan>[
                       TextSpan(
                         text: 'Únete ',

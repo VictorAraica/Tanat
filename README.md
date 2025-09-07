@@ -1,4 +1,4 @@
-# tanat
+# Tanat
 
 A new Flutter project.
 

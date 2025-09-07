@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 const Color primaryColor = Color(0xffBBDD8F);
-const Color darkColor = Color(0xFf101010);
+const Color darkColor = Color(0xFF101010);
+const Color darkColorWithOpacity = Color(0x7b101010);
+const Color whiteColor = Color(0xFFEFEFEF);
 
 const double minimumBottomSpace = 20.0;
 
-const double horizontalPadding = 28;
+const double horizontalPadding = 20;
 const int maxLengthPhone = 10;
 
 const ShapeBorder shapeForBottomSheet = RoundedRectangleBorder(

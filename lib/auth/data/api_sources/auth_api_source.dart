@@ -66,29 +66,6 @@ class AuthApiSource {
     }
   }
 
-  Future<(UserApp, String)> registerUserCompletingInfo(
-    CreateUserDto createUserDto,
-    String token,
-  ) async {
-    try {
-      final Response response = await dio.post(
-        '/auth/registerCCUser',
-        options: Options(headers: {'Authorization': 'Bearer $token'}),
-        data: createUserDto.toJson(),
-      );
-
-      return (
-        UserApp.fromJson(response.data['data']['user']),
-        response.data['data']['accessToken'] as String,
-      );
-    } catch (e) {
-      throw DioService.handleApiErrors(
-        e,
-        'Error::::registerUserCompletingInfo',
-      );
-    }
-  }
-
   Future<String> changeUserPassword(
     String account,
     String password,
@@ -152,39 +129,6 @@ class AuthApiSource {
       return;
     } catch (e) {
       DioService.handleApiErrors(e, 'Error::::updateUserNotificationToken');
-      rethrow;
-    }
-  }
-
-  Future<String> getIdentificationVerificationUrl() async {
-    try {
-      final Response response = await dio.get('/auth/faceVerificationUrl');
-      return response.data['data']['url'] as String;
-    } catch (e) {
-      DioService.handleApiErrors(
-        e,
-        'Error::::getIdentificationVerificationUrl',
-      );
-      rethrow;
-    }
-  }
-
-  Future<(String, UserApp)> getIdentificationVerificationResult(
-    String code,
-  ) async {
-    try {
-      final Response response = await dio.get(
-        '/auth/faceVerificationResult/$code',
-      );
-      return (
-        response.data['data']['result'] as String,
-        UserApp.fromJson(response.data['data']['user']),
-      );
-    } catch (e) {
-      DioService.handleApiErrors(
-        e,
-        'Error::::getIdentificationVerificationResult',
-      );
       rethrow;
     }
   }

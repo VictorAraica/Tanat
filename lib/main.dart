@@ -83,10 +83,6 @@ class _MyAppState extends State<MyApp> {
           title: 'Tanat',
           debugShowCheckedModeBanner: false,
           theme: clientTheme(context),
-          supportedLocales: const [
-            Locale('es'),
-            //Locale('en'),
-          ],
           builder: (context, child) {
             /* const maxScaleFactor = 1.2; // Set your max scale factor here
             final currentScaleFactor = MediaQuery.of(context).textScaleFactor;*/
@@ -114,6 +110,7 @@ class _MyAppState extends State<MyApp> {
               //   );
               // }
             },
+            child: InitialView(),
           ),
         ),
       ),
@@ -123,22 +120,30 @@ class _MyAppState extends State<MyApp> {
 
 ThemeData clientTheme(BuildContext context) => ThemeData(
   inputDecorationTheme: InputDecorationTheme(
-    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+    filled: true,
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(100),
+      borderSide: BorderSide.none,
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(100),
+      borderSide: BorderSide.none,
+    ),
+    border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
     alignLabelWithHint: true,
-    labelStyle: const TextStyle(fontWeight: FontWeight.w400),
+    labelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+    hintStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+    contentPadding: EdgeInsets.symmetric(horizontal: 23.0, vertical: 0.0),
+    fillColor: const Color(0x0b000000),
   ),
   textTheme: GoogleFonts.soraTextTheme(),
   colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
-  scaffoldBackgroundColor: const Color(0xFFF5F5F5),
+  scaffoldBackgroundColor: whiteColor,
   filledButtonTheme: FilledButtonThemeData(
     style: FilledButton.styleFrom(
-      backgroundColor: const Color(0xffF3F3F3),
+      textStyle: GoogleFonts.sora(fontSize: 16, fontWeight: FontWeight.w600),
+      backgroundColor: darkColor,
       minimumSize: const Size.fromHeight(50),
-      textStyle: GoogleFonts.sora(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-        color: const Color(0xFFFFFFFF),
-      ),
     ),
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
@@ -147,6 +152,11 @@ ThemeData clientTheme(BuildContext context) => ThemeData(
   dropdownMenuTheme: DropdownMenuThemeData(
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+    ),
+  ),
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      textStyle: GoogleFonts.sora(fontSize: 16, fontWeight: FontWeight.w600),
     ),
   ),
   useMaterial3: true,

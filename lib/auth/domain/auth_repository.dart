@@ -71,17 +71,6 @@ class AuthRepository {
     clearUserData(deleteAllData: true);
   }
 
-  Future<(UserApp, String)> registerUserCompletingInfo(
-    CreateUserDto createUserDto,
-    String tempToken,
-  ) async {
-    final (UserApp userApp, String token) = await authApiSource
-        .registerUserCompletingInfo(createUserDto, tempToken);
-    clearUserData(deleteAllData: true);
-    await saveUserData(userApp, token);
-    return (userApp, token);
-  }
-
   Future<String> changeUserPassword(
     String account,
     String password,
